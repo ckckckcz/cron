@@ -14,12 +14,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
       - name: Setup git identity
         run: |
           git config user.name "ckckckcz"
           git config user.email "rriovld@gmail.com"
 
-      - name: Run daily commit script
-        run: |
-          chmod +x ./daily.sh
-          ./daily.sh
+      - name: Run daily commit program
+        run: go run daily.go
